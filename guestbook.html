@@ -1,6 +1,23 @@
 	<html>
+		<head>Libro de Visitas GO</head>
 		<body>
-			<p>Escribiste:</p>
-			<pre>{{.}}</pre>
+			{{range .}}
+				{{with .Author}}
+					<p><b>{{.}}</b> escribi&oacute;:</p>
+				{{else}}
+					<p>Una persona an&oacute;nima escribi&oacute;:</p>
+				{{end}}
+
+				<pre>{{.Content}}</pre>
+			{{end}}
+
+			<form action="/sign" method="post">
+				<div>
+					<textarea name="content" rows="3" cols="60"></textarea>
+				</div>
+				<div>
+					<input type="submit" value="Firma el Libro de Visitas">
+				</div>
+			</form>
 		</body>
 	</html>
